@@ -8,7 +8,7 @@ mongoose.set("strictQuery", true);// to have strict Schemas and store in the dat
 mongoose.connect(   MONGODB_URL,{
     useNewUrlParser: true,
     useUnifiedTopology:true,
-    serverSelectionTimeoutMS: 30000 // Timeout after 5s instead of 30s
+    serverSelectionTimeoutMS: 30000 // Timeout after 30s 
 });
 const db =mongoose.connection;
 db.on("error",console.error.bind(console,"connection error:"));
