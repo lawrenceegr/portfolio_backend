@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../models/User.model');
 const verifyJWT = require('../middlewares/JWT_Auth');
 exports.index = async (req, res) => {
   try {

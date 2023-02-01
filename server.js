@@ -22,6 +22,9 @@ const Contact = require("./routes/Contact.routes");
 
 //Using the routes
 // app.use("/authentication", Auth);
+// app.use("/work", Work);
+// app.use("/social", Social);
+// app.use("/contact", Contact);
 
 // default route
 app.get("/",(req,res)=>{
