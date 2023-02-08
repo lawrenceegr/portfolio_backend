@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 //initializing the app
 const express = require('express');
 const app = express();
-
+app.set("view engine","ejs");
 // using middlewares
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());//body-parser 
@@ -21,10 +21,16 @@ const Social = require("./routes/Social.routes");
 const Contact = require("./routes/Contact.routes");
 
 //Using the routes
-// app.use("/authentication", Auth);
-// app.use("/work", Work);
-// app.use("/social", Social);
-// app.use("/contact", Contact);
+app.use("/authentication", Auth);
+app.use("/work", Work);
+app.use("/social", Social);
+app.use("/contact", Contact);
+
+
+// 
+app.get('/work', function(req, res) {
+  res.render('views/work');
+});
 
 // default route
 app.get("/",(req,res)=>{

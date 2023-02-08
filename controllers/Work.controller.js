@@ -9,29 +9,22 @@ exports.index = async (req, res) => {
 }
 };
 
-exports.create= (req, res) => {
-    const { dateStarted, dateEnded, workTitle, description } = req.body;
-    const image = req.file.path;
-  
+exports.create= async (req, res) => {
+ 
     const work = new Work({
-      dateStarted,
-      dateEnded,
-      workTitle,
-      description,
-      image,
+      title: req.body.title,
+      dateStarted: req.body.dateStarted,
+      dateEnded: req.body.dateEnded,
+      description: req.body.description,
+      image: { data: req.file.buffer, contentType: req.file.mimetype },
     });
-  
-    work
-      .save()
-      .then((result) => {
-        res.status(201).json({
-          message: "Work created successfully!",
-          work: result,
-        });
-      })
-      .catch((err) => {
-        handleError(err);
-      });
+     try {
+      const savedWork = await work.save();
+      res.send(savedWork);
+      } catch (error) {
+        // handleError(error);
+        res.send(error);
+      }
   };
 
 
@@ -48,16 +41,16 @@ exports.update = async (req, res) => {
     try {
         const updatedWork = await Work.updateOne({ _id: req.params.id }, {
             $set: {
-                dateStarted: req.body.dateStarted,
-                dateEnded: req.body.dateEnded,
-                title: req.body.title,
-                image: req.body.image,
-                description: req.body.description
+              title: req.body.title,
+              dateStarted: req.body.dateStarted,
+              dateEnded: req.body.dateEnded,
+              description: req.body.description,
+              image: { data: req.file.buffer, contentType: req.file.mimetype },
             }
         });
         res.send(updatedWork);
     } catch (err) {
-        res.status(400).send(err);
+        res.send(err);
     }
 };
 

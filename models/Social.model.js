@@ -1,22 +1,19 @@
 const mongoose = require('mongoose');
 
 const socialSchema = new mongoose.Schema({
-  facebook: {
+  platform: {
     type: String,
     required: true
   },
-  twitter: {
+  icon: {
     type: String,
     required: true
   },
-  linkedin: {
+  link: {
     type: String,
     required: true
   },
-  instagram: {
-    type: String,
-    required: true
-  },
+  
  
 });
 

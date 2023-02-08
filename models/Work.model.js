@@ -5,11 +5,11 @@ const workSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  startDate: {
+  dateStarted: {
     type: Date,
     required: true
   },
-  endDate: {
+  dateEnded: {
     type: Date,
     required: true
   },
@@ -17,10 +17,11 @@ const workSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  image: {
-    type: String,
-    required: true
-  }
+  image: { 
+    data: Buffer, 
+    contentType: String,
+   required:false
+   },
 });
 
 module.exports = mongoose.model('Work', workSchema);

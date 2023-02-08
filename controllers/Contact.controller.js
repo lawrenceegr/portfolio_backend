@@ -13,7 +13,7 @@ exports.create = async (req, res) => {
   const contact = new Contact({
     email: req.body.email,
     phone: req.body.phone,
-    physicalAddress: req.body.physicalAddress
+    address: req.body.address
   });
 
   try {
@@ -39,7 +39,7 @@ exports.update = async (req, res) => {
       $set: {
         email: req.body.email,
         phone: req.body.phone,
-        physicalAddress: req.body.physicalAddress
+        address: req.body.address
       }
     });
     res.send(updatedContact);
