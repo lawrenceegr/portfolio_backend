@@ -16,10 +16,12 @@ exports.create= async (req, res) => {
       dateStarted: req.body.dateStarted,
       dateEnded: req.body.dateEnded,
       description: req.body.description,
-      image: { data: req.file.buffer, contentType: req.file.mimetype },
+      image: req.file.location,
     });
      try {
       const savedWork = await work.save();
+    //   const imageUrl = await storeImageToS3(image, savedWork._id);
+    //   savedWork.image.url = imageUrl;
       res.send(savedWork);
       } catch (error) {
         // handleError(error);
@@ -45,7 +47,7 @@ exports.update = async (req, res) => {
               dateStarted: req.body.dateStarted,
               dateEnded: req.body.dateEnded,
               description: req.body.description,
-              image: { data: req.file.buffer, contentType: req.file.mimetype },
+              image:req.file.location,
             }
         });
         res.send(updatedWork);

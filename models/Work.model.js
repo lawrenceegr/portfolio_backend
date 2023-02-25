@@ -18,8 +18,7 @@ const workSchema = new mongoose.Schema({
     required: true
   },
   image: { 
-    data: Buffer, 
-    contentType: String,
+    type: String,
    required:false
    },
 });

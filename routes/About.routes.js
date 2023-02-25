@@ -3,7 +3,7 @@ const router = express.Router();
 const aboutController = require('../controllers/About.controller');
 const upload = require("../middlewares/Upload");
 
-router.get('/', aboutController.index);
+router.get('/', aboutController.show);
 // router.post('/',upload.single("image"), aboutController.create);
 router.post('/', aboutController.create);
 router.put('/:id', aboutController.update);

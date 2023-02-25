@@ -19,17 +19,19 @@ const Auth= require("./routes/User.routes");
 const Work = require("./routes/Work.routes");
 const Social = require("./routes/Social.routes");
 const Contact = require("./routes/Contact.routes");
+const About = require("./routes/About.routes")
 
 //Using the routes
 app.use("/authentication", Auth);
 app.use("/work", Work);
 app.use("/social", Social);
 app.use("/contact", Contact);
+app.use("/about",About);
 
 
 // 
 app.get('/work', function(req, res) {
-  res.render('views/work');
+  res.render('work');
 });
 
 // default route
